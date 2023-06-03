@@ -14,4 +14,9 @@ describe("global testing", () => {
     const res = await request(app).get("/api/books");
     expect(res.statusCode).not.toEqual(404);
   });
+
+  it("should call to addBook and failed", async () => {
+    const res = await request(app).post("/api/books");
+    expect(res.statusCode).toEqual(400);
+  });
 });
