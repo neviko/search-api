@@ -3,6 +3,7 @@ import cors from "cors";
 import { json } from "body-parser";
 import { activateRoutes } from "./routes";
 import rateLimit from "express-rate-limit";
+import { errorHandler } from "./middlewares/error-handler.middleware";
 
 //TODO:helmet, express-rate-limit
 
@@ -22,4 +23,6 @@ const limiter = rateLimit({
 app.use(json());
 app.use(limiter);
 activateRoutes();
+
+app.use(errorHandler);
 export { app };
