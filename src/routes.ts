@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import { booksRouter } from "./api/books/books.routes";
+import { searchRouter } from "./api/search/search.controller";
 import { app } from "./app";
-import { StatusCodes } from "http-status-codes";
 import { RouterError } from "./errors/router-error";
 
 export const activateRoutes = () => {
-  app.use("/api/books", booksRouter);
+  app.use("/api/search", searchRouter);
   app.all("*", async (req: Request, res: Response) => {
     throw new RouterError();
   });
